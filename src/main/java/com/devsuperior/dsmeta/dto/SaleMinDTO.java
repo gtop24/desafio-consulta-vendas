@@ -3,6 +3,7 @@ package com.devsuperior.dsmeta.dto;
 import java.time.LocalDate;
 
 import com.devsuperior.dsmeta.entities.Sale;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SaleMinDTO {
 
@@ -10,7 +11,10 @@ public class SaleMinDTO {
 	private Double amount;
 	private LocalDate date;
 	
-	public SaleMinDTO(Long id, Double amount, LocalDate date) {
+	public SaleMinDTO(
+			@JsonProperty("id") Long id,
+			@JsonProperty("amount") Double amount,
+			@JsonProperty("date") LocalDate date) {
 		this.id = id;
 		this.amount = amount;
 		this.date = date;
