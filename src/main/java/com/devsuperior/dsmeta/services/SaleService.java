@@ -3,6 +3,7 @@ package com.devsuperior.dsmeta.services;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
 import com.devsuperior.dsmeta.dto.SaleReportDTO;
+import com.devsuperior.dsmeta.dto.SaleSummaryDTO;
 import com.devsuperior.dsmeta.entities.Sale;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 
@@ -35,5 +37,13 @@ public class SaleService {
 		LocalDate max = (maxDate == null || maxDate.isEmpty()) ? today : LocalDate.parse(maxDate);
 		LocalDate min = (minDate == null || minDate.isEmpty()) ? max.minusYears(1L) : LocalDate.parse(minDate);
 		return repository.searchReport(min, max, name, pageable);
+	}
+
+	@Transactional(readOnly = true)
+	public List<SaleSummaryDTO> findSummary(String minDate, String maxDate) {
+		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+		LocalDate max = (maxDate == null || maxDate.isEmpty()) ? today : LocalDate.parse(maxDate);
+		LocalDate min = (minDate == null || minDate.isEmpty()) ? max.minusYears(1L) : LocalDate.parse(minDate);
+		return repository.searchSummary(min, max);
 	}
 }
