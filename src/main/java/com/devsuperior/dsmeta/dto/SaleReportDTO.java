@@ -8,25 +8,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SaleReportDTO {
 
 	private Long id;
-	private Double amount;
 	private LocalDate date;
+	private Double amount;
 	private String sellerName;
-	
+
 	public SaleReportDTO(
 			@JsonProperty("id") Long id,
-			@JsonProperty("amount") Double amount,
 			@JsonProperty("date") LocalDate date,
+			@JsonProperty("amount") Double amount,
 			@JsonProperty("sellerName") String sellerName) {
 		this.id = id;
-		this.amount = amount;
 		this.date = date;
+		this.amount = amount;
 		this.sellerName = sellerName;
 	}
-	
+
 	public SaleReportDTO(Sale entity) {
 		id = entity.getId();
-		amount = entity.getAmount();
 		date = entity.getDate();
+		amount = entity.getAmount();
 		sellerName = entity.getSeller().getName();
 	}
 
@@ -34,12 +34,12 @@ public class SaleReportDTO {
 		return id;
 	}
 
-	public Double getAmount() {
-		return amount;
-	}
-
 	public LocalDate getDate() {
 		return date;
+	}
+
+	public Double getAmount() {
+		return amount;
 	}
 
 	public String getSellerName() {
