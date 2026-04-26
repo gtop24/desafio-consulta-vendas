@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
+import com.devsuperior.dsmeta.dto.SaleReportDTO;
+import com.devsuperior.dsmeta.dto.SaleSummaryDTO;
 import com.devsuperior.dsmeta.services.SaleService;
 
 @RestController
@@ -24,13 +26,13 @@ public class SaleController {
 	}
 
 	@GetMapping(value = "/report")
-	public ResponseEntity<?> getReport() {
+	public ResponseEntity<SaleReportDTO> getReport() {
 		// TODO
 		return null;
 	}
 
 	@GetMapping(value = "/summary")
-	public ResponseEntity<?> getSummary() {
+	public ResponseEntity<SaleSummaryDTO> getSummary() {
 		// TODO
 		return null;
 	}
