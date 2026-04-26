@@ -1,30 +1,24 @@
 package com.devsuperior.dsmeta.dto;
 
-import com.devsuperior.dsmeta.entities.Sale;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SaleSummaryDTO {
 
 	private String sellerName;
-	private Double amount;
-	
+	private Double total;
+
 	public SaleSummaryDTO(
 			@JsonProperty("sellerName") String sellerName,
-			@JsonProperty("amount") Double amount) {
+			@JsonProperty("total") Double total) {
 		this.sellerName = sellerName;
-		this.amount = amount;
-	}
-	
-	public SaleSummaryDTO(Sale entity) {
-		sellerName = entity.getSeller().getName();
-		amount = entity.getAmount();
+		this.total = total;
 	}
 
 	public String getSellerName() {
 		return sellerName;
 	}
 
-	public Double getAmount() {
-		return amount;
+	public Double getTotal() {
+		return total;
 	}
 }
